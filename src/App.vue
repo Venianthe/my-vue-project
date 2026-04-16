@@ -1,7 +1,9 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
+import useValidation from './components/composables/useValidation/useValidation.vue'
+import useApi from './components/composables/useApi/useApi.vue'
 </script>
 
 <template>
-  <HelloWorld />
+  <useValidation />
+  <useApi />
 </template>
