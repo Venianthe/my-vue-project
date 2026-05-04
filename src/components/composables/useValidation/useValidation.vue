@@ -26,7 +26,7 @@
 </script>
 
 <template>
-  <form @submit.prevent="handleSubmit">
+  <form @submit.prevent="handleSubmit" class="submitForm">
     <div>
       <label>Имя:</label>
       <input v-model="values.name" />

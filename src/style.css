@@ -2,7 +2,11 @@
 @import url(./components/composables/useValidation/useValidation.css);
 
 #app {
-  margin: 0 auto;
-  max-width: 1440px;
+  margin: 40px auto 0;
+  max-width: 440px;
   max-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+  gap: 40px;
 }

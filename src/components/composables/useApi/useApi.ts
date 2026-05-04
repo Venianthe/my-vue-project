@@ -81,10 +81,10 @@ export function useApi<T = any>(
    */
   const execute = async (override?: Partial<RequestConfig>): Promise<T | null> => {
     // Отменяем предыдущий запрос, если он ещё выполняется
-    // if (abortController) {
-    //   abortController.abort();
-    // }
-    // abortController = new AbortController();
+    if (abortController) {
+      abortController.abort();
+    }
+    abortController = new AbortController();
 
     const mergedConfig: RequestConfig = { ...config, ...override };
     const { url, method = 'GET', headers = {}, body, params } = mergedConfig;

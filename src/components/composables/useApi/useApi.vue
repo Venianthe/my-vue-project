@@ -1,11 +1,29 @@
 <script setup lang="ts">
     import { useApi } from './useApi';
+    import { computed } from 'vue';
+
+    interface Post {
+        id: number;
+        name: string;
+        mail: string;
+        userId: number;
+    }
 
     // Создаём composable для получения данных
-    const { data, loading, error, success, execute } = useApi<{ id: number; title: string }>(
-        { url: 'https://jsonplaceholder.typicode.com/posts/1', method: 'GET' },
+    const { data, loading, error, success, execute } = useApi<Post[]>(
+        { url: 'http://localhost:3000/posts', method: 'GET' },
         { immediate: true } // сразу загружаем
     );
+
+    const lastPost = computed(() => {
+        if (!data.value || data.value.length === 0) return null;
+        return data.value[data.value.length - 1];
+    });
+
+    const nextUserId = computed(() => {
+        if (!data.value) return 1;
+        return data.value.length + 1;
+    });
 
     // Функция для обновления данных (например, при нажатии кнопки)
     const refresh = () => {
@@ -14,25 +32,25 @@
 
     // Отправка POST-запроса
     const createPost = async () => {
-    const result = await execute({
-        method: 'POST',
-        url: 'https://jsonplaceholder.typicode.com/posts',
-        body: { title: 'foo', body: 'bar', userId: 1 },
-    });
-    if (result) {
-        console.log('Создан пост:', result);
-    }
+        const result = await execute({
+            method: 'POST',
+            url: 'http://localhost:3000/posts',
+            body: { name: 'Alex', mail: 'bar@yar.kor', userId: nextUserId.value },
+        });
+        if (result) {
+            console.log('Создан пост:', result);
+        }
     };
 </script>
 
 <template>
-  <div>
+  <div class="post">
     <div v-if="loading">Загрузка...</div>
     <div v-else-if="error">Ошибка: {{ error.message }}</div>
     <div v-else-if="success">
-      <pre>{{ data }}</pre>
+      <pre>{{ lastPost }}</pre>
     </div>
     <button @click="refresh">Обновить</button>
-    <button @click="createPost">Создать пост</button>
+    <button @click="createPost">Создать</button>
   </div>
 </template>

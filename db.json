@@ -1,0 +1,42 @@
+{
+  "posts": [
+    {
+      "name": "Alex",
+      "mail": "alex-dog@yandex.cat",
+      "userId": 1,
+      "id": "1"
+    },
+    {
+      "name": "Alex",
+      "mail": "bar@yar.kor",
+      "userId": 2,
+      "id": "SYe_Dcc9jCA"
+    },
+    {
+      "name": "Alex",
+      "mail": "bar@yar.kor",
+      "userId": 3,
+      "id": "QnpQwUYA0kw"
+    },
+    {
+      "name": "Alex",
+      "mail": "bar@yar.kor",
+      "userId": 4,
+      "id": "ntKE38-_NHk"
+    },
+    {
+      "name": "Alex",
+      "mail": "bar@yar.kor",
+      "userId": 5,
+      "id": "1Z3LJKdCUno"
+    },
+    {
+      "name": "Alex",
+      "mail": "bar@yar.kor",
+      "userId": 6,
+      "id": "jegTdkLhkXc"
+    }
+  ],
+  "users": [],
+  "$schema": "./node_modules/json-server/schema.json"
+}
