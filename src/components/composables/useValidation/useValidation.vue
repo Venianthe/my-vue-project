@@ -30,12 +30,12 @@
     <div>
       <label>Имя:</label>
       <input v-model="values.name" />
-      <span v-if="errors.name">{{ errors.name }}</span>
+      <div v-if="errors.name">{{ errors.name }}</div>
     </div>
     <div>
       <label>Email:</label>
       <input v-model="values.email" />
-      <span v-if="errors.email">{{ errors.email }}</span>
+      <div v-if="errors.email">{{ errors.email }}</div>
     </div>
     <button type="submit" :disabled="!isValid">Отправить</button>
   </form>
